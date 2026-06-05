@@ -104,3 +104,41 @@ POST /api/auth/register
 * JWT token generation
 * Authentication middleware
 * Protected routes
+
+# Day 4 Progress
+
+## Completed
+
+- JWT utility created
+- Login validation schema implemented
+- Login service implemented
+- Password comparison using bcrypt
+- JWT token generation
+- Login controller implemented
+- Login route created
+- Authentication flow tested
+
+## Endpoint Implemented
+
+POST /api/auth/login
+
+## Features Added
+
+- User authentication
+- Password verification
+- JWT generation
+- Secure login flow
+- Error handling
+
+## Learnings
+
+- JWT authentication
+- Token generation
+- Password verification
+- Authentication architecture
+
+## Next Steps
+
+- Authentication middleware
+- Protected routes
+- User profile endpoint
