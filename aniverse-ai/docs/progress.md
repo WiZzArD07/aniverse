@@ -51,3 +51,56 @@
 - Request Validation with Zod
 - User Login API
 - JWT Authentication
+
+# Day 3 Progress
+
+## Completed
+
+* Created authentication validation schema using Zod
+* Implemented user registration service
+* Implemented user registration controller
+* Created authentication routes
+* Connected routes to Express application
+* Added email uniqueness validation
+* Implemented password hashing using bcrypt
+* Integrated Prisma with registration flow
+* Successfully stored users in PostgreSQL
+* Tested registration endpoint successfully
+
+## Endpoint Implemented
+
+POST /api/auth/register
+
+## Features Added
+
+* Request validation
+* Email format validation
+* Password length validation
+* Duplicate email prevention
+* Secure password hashing
+* Structured API responses
+* Error handling
+
+## Verification
+
+* User registration tested successfully
+* User persisted in PostgreSQL
+* Password stored as bcrypt hash
+* UUID generated correctly
+* Registration flow working end-to-end
+
+## Learnings
+
+* Zod validation
+* Service layer architecture
+* Controller pattern
+* Password hashing with bcrypt
+* Prisma CRUD operations
+* Authentication fundamentals
+
+## Next Steps
+
+* Login API
+* JWT token generation
+* Authentication middleware
+* Protected routes

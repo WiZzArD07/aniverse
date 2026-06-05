@@ -1,5 +1,8 @@
 import { Router } from "express";
 
+import authRoutes
+from "./auth.routes";
+
 const router = Router();
 
 router.get("/", (_req, res) => {
@@ -8,5 +11,10 @@ router.get("/", (_req, res) => {
     message: "AniVerse API Running"
   });
 });
+
+router.use(
+  "/api/auth",
+  authRoutes
+);
 
 export default router;
