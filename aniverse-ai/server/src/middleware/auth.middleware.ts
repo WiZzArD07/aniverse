@@ -1,8 +1,18 @@
 import { Request, Response, NextFunction } from "express";
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 
 export interface AuthRequest extends Request {
-  user?: any;
+  user?: {
+    userId: string;
+    email: string;
+    role: string;
+  };
+}
+
+interface CustomJwtPayload extends JwtPayload {
+  userId: string;
+  email: string;
+  role: string;
 }
 
 export const authenticate = (
@@ -13,8 +23,7 @@ export const authenticate = (
 
   try {
 
-    const authHeader =
-      req.headers.authorization;
+    const authHeader = req.headers.authorization;
 
     if (!authHeader) {
       return res.status(401).json({
@@ -23,8 +32,7 @@ export const authenticate = (
       });
     }
 
-    const token =
-      authHeader.split(" ")[1];
+    const token = authHeader.split(" ")[1];
 
     if (!token) {
       return res.status(401).json({
@@ -36,9 +44,13 @@ export const authenticate = (
     const decoded = jwt.verify(
       token,
       process.env.JWT_SECRET || "fallback_secret"
-    );
+    ) as CustomJwtPayload;
 
-    req.user = decoded;
+    req.user = {
+      userId: decoded.userId,
+      email: decoded.email,
+      role: decoded.role
+    };
 
     next();
 
