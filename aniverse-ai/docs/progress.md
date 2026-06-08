@@ -142,3 +142,41 @@ POST /api/auth/login
 - Authentication middleware
 - Protected routes
 - User profile endpoint
+
+# Day 5 Progress
+
+## Completed
+
+- JWT authentication middleware implemented
+- Protected routes implemented
+- User profile endpoint created
+- Authorization header validation
+- JWT verification
+- Request user injection
+- Protected route testing
+
+## Endpoint Implemented
+
+GET /api/users/profile
+
+## Features Added
+
+- Route protection
+- JWT verification
+- Auth middleware
+- Current user retrieval
+- Secure endpoint access
+
+## Learnings
+
+- Middleware architecture
+- JWT verification
+- Protected routes
+- Request lifecycle
+- Authorization flow
+
+## Next Steps
+
+- Database-backed profile endpoint
+- Role-based access control
+- User management APIs
