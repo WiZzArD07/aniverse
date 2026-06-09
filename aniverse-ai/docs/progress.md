@@ -263,3 +263,43 @@ Version 2:
 * Anime Search API
 * Watchlist API
 * Favorites API
+
+# Day 8 Progress
+
+## Completed
+
+* Anime model created
+* Genre model created
+* AnimeGenre join table created
+* Prisma schema expanded
+* Database migration executed
+* Prisma Client regenerated
+* Anime service skeleton created
+* Anime type definitions added
+
+## Database Models
+
+* User
+* Anime
+* Genre
+* AnimeGenre
+
+## Features Added
+
+* Anime catalog foundation
+* Genre categorization foundation
+* Many-to-many anime genre relationship
+
+## Learnings
+
+* Database normalization
+* Many-to-many relationships
+* Prisma relation modeling
+* Schema evolution
+
+## Next Steps
+
+* Anime CRUD APIs
+* Admin anime creation
+* Genre management
+* Catalog endpoints

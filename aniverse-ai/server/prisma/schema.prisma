@@ -8,11 +8,50 @@ datasource db {
 }
 
 model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("user")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Anime {
   id          String   @id @default(uuid())
-  name        String
-  email       String   @unique
-  password    String
-  role        String   @default("user")
+  title       String
+  description String
+  coverImage  String
+  bannerImage String?
+  releaseYear Int
+  status      String
+  rating      Float?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
+  genres AnimeGenre[]
+
+  @@map("animes")
+}
+
+model Genre {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+
+  animes AnimeGenre[]
+
+  @@map("genres")
+}
+
+model AnimeGenre {
+  animeId String
+  genreId String
+
+  anime Anime @relation(fields: [animeId], references: [id], onDelete: Cascade)
+
+  genre Genre @relation(fields: [genreId], references: [id], onDelete: Cascade)
+
+  @@id([animeId, genreId])
+  @@map("anime_genres")
 }
