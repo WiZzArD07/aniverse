@@ -33,16 +33,40 @@ async (req: Request, res: Response) => {
 };
 
 export const getAllAnimeController =
-async (_req: Request, res: Response) => {
+async (req: Request, res: Response) => {
 
-  const anime =
-    await getAllAnime();
+  console.log(req.query);
+
+  const page =
+    Number(req.query.page) || 1;
+
+  const limit =
+    Number(req.query.limit) || 10;
+
+  const status =
+    req.query.status as string;
+
+  const year =
+    req.query.year
+      ? Number(req.query.year)
+      : undefined;
+
+  const result =
+  await getAllAnime(
+    page,
+    limit,
+    status,
+    year
+  );
 
   return res.json({
-    success: true,
-    anime
+  success: true,
+  page,
+  limit,
+  total: result.total,
+  anime: result.anime
   });
-
+  
 };
 
 export const getAnimeByIdController =

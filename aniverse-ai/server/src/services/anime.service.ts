@@ -6,12 +6,40 @@ export const createAnime = async (data: any) => {
   });
 };
 
-export const getAllAnime = async () => {
-  return prisma.anime.findMany({
-    orderBy: {
-      createdAt: "desc"
-    }
-  });
+export const getAllAnime = async (
+  page: number,
+  limit: number,
+  status?: string,
+  year?: number
+) => {
+
+  const skip =
+    (page - 1) * limit;
+
+  const where = {
+    ...(status && { status }),
+    ...(year && { releaseYear: year })
+  };
+
+  const anime =
+    await prisma.anime.findMany({
+      where,
+      skip,
+      take: limit,
+      orderBy: {
+        createdAt: "desc"
+      }
+    });
+
+  const total =
+    await prisma.anime.count({
+      where
+    });
+
+  return {
+    anime,
+    total
+  };
 };
 
 export const getAnimeById = async (
